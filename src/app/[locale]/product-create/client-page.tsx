@@ -65,7 +65,7 @@ export default function ClientPage() {
 
   return (
     <div>
-        <div className="flex h-screen w-full justify-center overflow-hidden">
+        <div className="flex w-full justify-center">
           <div className="edit-form max-w-md mx-auto bg-white p-6">
             <h4 className="text-2xl font-semibold text-center mb-6">Create Product</h4>
             <form className="space-y-4">

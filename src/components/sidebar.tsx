@@ -1,40 +1,59 @@
 'use client';
 
-export default function Sidebar() {
-  function fSidebarClick(page: string) {
-    if (page === 'user') {
-      window.location.href = '/user';
-    }
-    if (page === 'product') {
-      window.location.href = '/product';
-    }
-  }
+interface SidebarProps {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}
 
+function fSidebarClick(page: string) {
+  if (page === 'user') {
+    window.location.href = '/user';
+  }
+  if (page === 'product') {
+    window.location.href = '/product';
+  }
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   return (
-    <div className="mt-2 flex w-full flex-col items-center p-2">
-      <div>
-        <span className="text-3xl font-semibold text-white">FIFI</span>
-      </div>
-      <div className="mt-5 flex w-full flex-col gap-4">
+    <div
+      className={`bg-gray-800 transition-all duration-300 ${
+        isOpen ? 'w-full' : 'w-20'
+      } h-screen`}
+    >
+      <button
+        onClick={toggleSidebar}
+        className="text-white p-4"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-white">
+            <path
+              strokeLinecap="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+        </svg>
+      </button>
+      
+      <div className="flex flex-col items-center p-2">
+        <div className="text-white text-xl font-semibold mb-4">FIFI</div>
+        
         <button
-          className="w-full cursor-pointer rounded-md px-4 py-2 text-left transition-all hover:bg-slate-700"
-          type="button"
+          className="w-full text-left text-white px-4 py-2 transition-all hover:bg-slate-700"
           onClick={() => {
-            fSidebarClick('user');
-          }}
+            fSidebarClick('user');}}
         >
-          <span className="text-white">User</span>
+          {isOpen ? <span>User</span> : ''}
         </button>
-        <button 
-          className="w-full cursor-pointer rounded-md px-4 py-2 text-left transition-all hover:bg-slate-700"
-          type="button"
-          onClick={() => {
-            fSidebarClick('product');
+        <button
+          className="w-full text-left text-white px-4 py-2 transition-all hover:bg-slate-700"
+          onClick={() => {fSidebarClick('product');
           }}
         >
-          <span className="text-white">Product</span>
+          {isOpen ? <span>Product</span> : ''}
         </button>
       </div>
     </div>
   );
 }
+
+export default Sidebar;

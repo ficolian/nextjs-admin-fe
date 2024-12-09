@@ -8,8 +8,12 @@ import '@/styles/global.css';
 export default function RootLayout(props: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
-}) {
+  }) {
   const [pathArray, setPathArray] = useState<string[]>([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   useEffect(() => {
     // Code here only runs on the client (browser)
@@ -29,9 +33,9 @@ export default function RootLayout(props: {
   } else {
     return (
       <html lang="en">
-        <body className="flex overflow-hidden" suppressHydrationWarning>
-          <div className="h-screen min-w-80 overflow-y-auto bg-black">
-            <Sidebar />
+        <body className="flex overflow-auto" suppressHydrationWarning>
+          <div className={`h-screen min-w-${isSidebarOpen ? '80' : '20'} transition-all`}>
+            <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
           </div>
           <div className="flex w-full flex-col overflow-hidden">
             <div className="w-full overflow-hidden shadow-md">

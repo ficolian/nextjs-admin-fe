@@ -44,15 +44,7 @@ export default function ClientPage() {
 
   return (
     <div className="flex h-screen w-full items-center justify-center overflow-hidden">
-
-      {/* {loading
-        ? (
-            <div className="loading-container">
-              <ReactLoading type="spin" color="#00BFFF" height={50} width={50} />
-            </div>
-          )
-        : ( */}
-      <div className="flex w-96 flex-col items-center gap-4 border px-4 py-6 shadow-md">
+      <div className="flex w-full sm:w-96 flex-col items-center gap-4 border px-4 py-6 shadow-md">
         <div>
           <span className="text-3xl font-semibold">LOGIN</span>
         </div>
@@ -105,12 +97,12 @@ export default function ClientPage() {
               fLoginBtnClick();
             }}
           >
-            <span className=" text-white">Login</span>
+            <span className="text-white">Login</span>
           </button>
         </div>
 
         <div className="flex gap-2">
-          <span>Don't have account? </span>
+          <span>Don't have an account? </span>
           <Link href="/register">Register now</Link>
         </div>
       </div>
@@ -120,10 +112,11 @@ export default function ClientPage() {
           <div className="bg-white p-6 rounded-md shadow-lg flex items-center justify-center">
             <div className="loader-border border-t-transparent border-4 border-blue-500 border-solid rounded-full w-16 h-16 animate-spin">
             </div>
-          <p className="ml-4 text-lg text-gray-700">Loading...</p>
+            <p className="ml-4 text-lg text-gray-700">Loading...</p>
           </div>
         </div>
-      )}      
+      )}
     </div>
+
   );
 }
