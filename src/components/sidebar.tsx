@@ -18,7 +18,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   return (
     <div
       className={`bg-gray-800 transition-all duration-300 ${
-        isOpen ? 'w-full' : 'w-20'
+        isOpen ? 'w-80' : 'w-20'
       } h-screen`}
     >
       <button

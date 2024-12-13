@@ -33,8 +33,8 @@ export default function RootLayout(props: {
   } else {
     return (
       <html lang="en">
-        <body className="flex overflow-auto" suppressHydrationWarning>
-          <div className={`h-screen min-w-${isSidebarOpen ? '80' : '20'} transition-all`}>
+        <body className="flex overflow-hidden" suppressHydrationWarning>
+          <div className={`h-screen w-${isSidebarOpen ? '80' : '20'} transition-all`}>
             <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
           </div>
           <div className="flex w-full flex-col overflow-hidden">
